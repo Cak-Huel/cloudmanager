@@ -6,7 +6,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/filebrowser/filebrowser/v2)](https://goreportcard.com/report/github.com/filebrowser/filebrowser/v2)
 [![Version](https://img.shields.io/github/release/filebrowser/filebrowser.svg)](https://github.com/filebrowser/filebrowser/releases/latest)
 
-File Browser provides a file managing interface within a specified directory and it can be used to upload, delete, preview and edit your files. It is a **create-your-own-cloud**-kind of software where you can just install it on your server, direct it to a path and access your files through a nice web interface.
+File Browser menyediakan antarmuka pengelolaan file di dalam direktori tertentu dan dapat digunakan untuk mengunggah, menghapus, melihat pratinjau, dan mengedit file Anda. Ini adalah perangkat lunak jenis **buat cloud Anda sendiri** di mana Anda cukup menginstalnya di server Anda, mengarahkannya ke suatu jalur, dan mengakses file Anda melalui antarmuka web yang bagus.
 
 ## Documentation
 
