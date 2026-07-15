@@ -1,5 +1,6 @@
 {
-  "name": "filebrowser-frontend",
+  "name": "cloud-manager-frontend",
+  "author": "Cak-Huel",
   "version": "3.0.0",
   "private": true,
   "type": "module",
