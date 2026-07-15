@@ -27,6 +27,7 @@ export default {
       he: "עברית",
       hr: "Hrvatski",
       hu: "Magyar",
+      id: "Bahasa Indonesia",
       is: "Icelandic",
       it: "Italiano",
       ja: "日本語",
