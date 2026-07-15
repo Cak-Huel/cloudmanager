@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/filebrowser/filebrowser/v2/files"
+	"github.com/cak-huel/cloudmanager/v2/files"
 	"github.com/spf13/afero"
 )
 

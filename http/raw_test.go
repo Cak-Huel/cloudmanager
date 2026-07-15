@@ -12,9 +12,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/filebrowser/filebrowser/v2/files"
-	"github.com/filebrowser/filebrowser/v2/settings"
-	"github.com/filebrowser/filebrowser/v2/users"
+	"github.com/cak-huel/cloudmanager/v2/files"
+	"github.com/cak-huel/cloudmanager/v2/settings"
+	"github.com/cak-huel/cloudmanager/v2/users"
 )
 
 // Regression for the archive backslash-to-slash zip-slip (GHSA-83xp-526h-j3ww):

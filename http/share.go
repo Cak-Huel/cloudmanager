@@ -13,9 +13,9 @@ import (
 	"strings"
 	"time"
 
-	fberrors "github.com/filebrowser/filebrowser/v2/errors"
-	"github.com/filebrowser/filebrowser/v2/share"
-	"github.com/filebrowser/filebrowser/v2/users"
+	fberrors "github.com/cak-huel/cloudmanager/v2/errors"
+	"github.com/cak-huel/cloudmanager/v2/share"
+	"github.com/cak-huel/cloudmanager/v2/users"
 	"golang.org/x/crypto/bcrypt"
 )
 

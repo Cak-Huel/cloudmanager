@@ -9,8 +9,8 @@ import (
 
 	"github.com/asdine/storm/v3"
 
-	"github.com/filebrowser/filebrowser/v2/settings"
-	"github.com/filebrowser/filebrowser/v2/storage/bolt"
+	"github.com/cak-huel/cloudmanager/v2/settings"
+	"github.com/cak-huel/cloudmanager/v2/storage/bolt"
 )
 
 // Regression for the username-normalization home-directory collision

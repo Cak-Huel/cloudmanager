@@ -23,14 +23,14 @@ import (
 	"github.com/spf13/viper"
 	lumberjack "gopkg.in/natefinch/lumberjack.v2"
 
-	"github.com/filebrowser/filebrowser/v2/auth"
-	"github.com/filebrowser/filebrowser/v2/diskcache"
-	"github.com/filebrowser/filebrowser/v2/frontend"
-	fbhttp "github.com/filebrowser/filebrowser/v2/http"
-	"github.com/filebrowser/filebrowser/v2/img"
-	"github.com/filebrowser/filebrowser/v2/settings"
-	"github.com/filebrowser/filebrowser/v2/storage"
-	"github.com/filebrowser/filebrowser/v2/users"
+	"github.com/cak-huel/cloudmanager/v2/auth"
+	"github.com/cak-huel/cloudmanager/v2/diskcache"
+	"github.com/cak-huel/cloudmanager/v2/frontend"
+	fbhttp "github.com/cak-huel/cloudmanager/v2/http"
+	"github.com/cak-huel/cloudmanager/v2/img"
+	"github.com/cak-huel/cloudmanager/v2/settings"
+	"github.com/cak-huel/cloudmanager/v2/storage"
+	"github.com/cak-huel/cloudmanager/v2/users"
 )
 
 var (

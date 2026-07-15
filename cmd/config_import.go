@@ -7,8 +7,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/filebrowser/filebrowser/v2/auth"
-	"github.com/filebrowser/filebrowser/v2/settings"
+	"github.com/cak-huel/cloudmanager/v2/auth"
+	"github.com/cak-huel/cloudmanager/v2/settings"
 )
 
 func init() {

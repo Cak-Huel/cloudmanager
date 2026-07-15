@@ -12,12 +12,12 @@ import (
 	"testing"
 
 	"github.com/asdine/storm/v3"
-	"github.com/filebrowser/filebrowser/v2/files"
-	"github.com/filebrowser/filebrowser/v2/settings"
-	"github.com/filebrowser/filebrowser/v2/share"
-	"github.com/filebrowser/filebrowser/v2/storage"
-	"github.com/filebrowser/filebrowser/v2/storage/bolt"
-	"github.com/filebrowser/filebrowser/v2/users"
+	"github.com/cak-huel/cloudmanager/v2/files"
+	"github.com/cak-huel/cloudmanager/v2/settings"
+	"github.com/cak-huel/cloudmanager/v2/share"
+	"github.com/cak-huel/cloudmanager/v2/storage"
+	"github.com/cak-huel/cloudmanager/v2/storage/bolt"
+	"github.com/cak-huel/cloudmanager/v2/users"
 	"github.com/spf13/afero"
 )
 

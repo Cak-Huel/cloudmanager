@@ -1,4 +1,4 @@
-module github.com/filebrowser/filebrowser/v2
+module github.com/cak-huel/cloudmanager/v2
 
 go 1.25.0
 

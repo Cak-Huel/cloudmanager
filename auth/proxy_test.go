@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"testing"
 
-	fberrors "github.com/filebrowser/filebrowser/v2/errors"
-	"github.com/filebrowser/filebrowser/v2/settings"
-	"github.com/filebrowser/filebrowser/v2/users"
+	fberrors "github.com/cak-huel/cloudmanager/v2/errors"
+	"github.com/cak-huel/cloudmanager/v2/settings"
+	"github.com/cak-huel/cloudmanager/v2/users"
 )
 
 type mockUserStore struct {

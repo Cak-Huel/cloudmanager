@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/filebrowser/filebrowser/v2/rules"
+	"github.com/cak-huel/cloudmanager/v2/rules"
 )
 
 const DefaultUsersHomeBasePath = "/users"

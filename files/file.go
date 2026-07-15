@@ -22,8 +22,8 @@ import (
 	"strings"
 	"time"
 
-	fberrors "github.com/filebrowser/filebrowser/v2/errors"
-	"github.com/filebrowser/filebrowser/v2/rules"
+	fberrors "github.com/cak-huel/cloudmanager/v2/errors"
+	"github.com/cak-huel/cloudmanager/v2/rules"
 	"github.com/spf13/afero"
 )
 
