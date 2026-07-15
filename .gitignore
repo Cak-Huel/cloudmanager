@@ -12,8 +12,15 @@ rice-box.go
 node_modules
 
 # local env files
+.env
+.env.*
 .env.local
 .env.*.local
+*.pem
+*.key
+certs/
+config.json
+config.yml
 
 # Log files
 npm-debug.log*
