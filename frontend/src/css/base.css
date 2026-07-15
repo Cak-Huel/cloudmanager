@@ -56,6 +56,10 @@ nav {
   position: fixed;
   top: 4em;
   left: 0;
+  padding: 12px 0;
+  /* Add padding to M3 navigation drawer container */
+  background: var(--sidebar-bg);
+  height: calc(100vh - 4em);
 }
 
 html[dir="rtl"] nav {
@@ -64,26 +68,144 @@ html[dir="rtl"] nav {
 }
 
 nav .action {
-  width: 100%;
-  display: block;
-  border-radius: 0;
-  font-size: 1.1em;
-  padding: 0.5em;
+  width: calc(100% - 24px);
+  margin: 4px 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 100px;
+  /* Pill shaped items */
+  font-size: 0.95rem;
+  padding: 0 16px;
+  height: 48px;
+  /* M3 Navigation Drawer Item Height */
+  color: var(--textSecondary);
+  background: transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+nav .action i {
+  margin-right: 12px;
+  font-size: 1.4rem;
+  color: var(--textPrimary);
+  transition: color 0.2s ease;
+}
+
+nav .action span {
+  font-weight: 500;
+  color: inherit;
+}
+
 html[dir="rtl"] nav .action {
   text-align: right;
+  flex-direction: row-reverse;
 }
 
-nav > div {
-  border-top: 1px solid var(--divider);
+html[dir="rtl"] nav .action i {
+  margin-right: 0;
+  margin-left: 12px;
 }
 
-nav .action > * {
-  vertical-align: middle;
+nav .action:hover {
+  background-color: var(--hover);
+  color: var(--md-sys-color-on-surface);
+}
+
+nav .action:hover i {
+  color: var(--md-sys-color-on-surface);
+}
+
+nav .action.router-link-active,
+nav .action.active {
+  background-color: var(--md-sys-color-secondary-container) !important;
+  color: var(--md-sys-color-on-secondary-container) !important;
+}
+
+nav .action.router-link-active i,
+nav .action.active i {
+  color: var(--md-sys-color-on-secondary-container) !important;
+}
+
+nav>div {
+  border-top: 0;
+  /* Remove dividing line */
+  margin-top: 8px;
+}
+
+/* M3 "+ New" Dropdown Menu styling (Google Drive style) */
+.new-menu-wrapper {
+  position: relative;
+  margin: 8px 12px;
+}
+
+.new-btn {
+  background-color: var(--md-sys-color-primary-container) !important;
+  color: var(--md-sys-color-on-primary-container) !important;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  height: 56px !important;
+  width: calc(100% - 24px) !important;
+  margin: 0 !important;
+  padding: 0 24px !important;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease !important;
+}
+
+.new-btn i {
+  color: var(--md-sys-color-on-primary-container) !important;
+  margin-right: 12px;
+  font-size: 1.6rem !important;
+}
+
+.new-btn:hover {
+  background-color: var(--md-sys-color-primary-container) !important;
+  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3) !important;
+}
+
+.new-menu-dropdown {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: var(--surfacePrimary);
+  border-radius: 16px;
+  box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  width: calc(100% - 24px);
+  padding: 8px 0;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--divider);
+}
+
+.new-menu-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--textPrimary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.new-menu-dropdown .dropdown-item i {
+  margin-right: 12px;
+  font-size: 1.3rem;
+  color: var(--textSecondary);
+}
+
+.new-menu-dropdown .dropdown-item:hover {
+  background-color: var(--hover);
 }
 
 main {
@@ -152,13 +274,13 @@ html[dir="rtl"] .breadcrumbs a {
   word-break: break-all;
 }
 
-.vue-number-input > input {
+.vue-number-input>input {
   background: var(--surfacePrimary) !important;
   border-color: var(--surfaceSecondary) !important;
   color: var(--textSecondary) !important;
 }
 
-.vue-number-input--small > input {
+.vue-number-input--small>input {
   height: 1rem !important;
   font-size: 1rem !important;
 }
@@ -182,7 +304,7 @@ html[dir="rtl"] .breadcrumbs a {
   background: var(--textSecondary) !important;
 }
 
-body > div[style*="z-index: 9990"] {
+body>div[style*="z-index: 9990"] {
   z-index: 10000 !important;
 }
 

@@ -7,7 +7,7 @@
     @touchstart="toggleNavigation"
   >
     <header-bar v-if="isPdf || isEpub || isCsv || showNav">
-      <action icon="close" :label="$t('buttons.close')" @action="close()" />
+      <action icon="arrow_back" :label="$t('buttons.close')" @action="close()" />
       <title>{{ name }}</title>
       <action
         :disabled="layoutStore.loading"
@@ -20,7 +20,7 @@
         <action
           :disabled="layoutStore.loading"
           v-if="authStore.user?.perm.rename"
-          icon="mode_edit"
+          icon="drive_file_rename_outline"
           :label="$t('buttons.rename')"
           show="rename"
         />
@@ -34,7 +34,7 @@
         <action
           :disabled="layoutStore.loading"
           v-if="authStore.user?.perm.delete"
-          icon="delete"
+          icon="delete_outline"
           :label="$t('buttons.delete')"
           @action="deleteFile"
           id="delete-button"
@@ -42,7 +42,7 @@
         <action
           :disabled="layoutStore.loading"
           v-if="authStore.user?.perm.download"
-          icon="file_download"
+          icon="download"
           :label="$t('buttons.download')"
           @action="download"
         />
@@ -58,7 +58,7 @@
         />
         <action
           :disabled="layoutStore.loading"
-          icon="info"
+          icon="info_outline"
           :label="$t('buttons.info')"
           show="info"
         />
@@ -127,14 +127,14 @@
         <object v-else-if="isPdf" class="pdf" :data="previewUrl"></object>
         <div v-else-if="fileStore.req?.type == 'blob'" class="info">
           <div class="title">
-            <i class="material-icons">feedback</i>
+            <i class="material-icons">info_outline</i>
             {{ $t("files.noPreview") }}
           </div>
           <div>
             <a target="_blank" :href="downloadUrl" class="button button--flat">
               <div>
-                <i class="material-icons">file_download</i
-                >{{ $t("buttons.download") }}
+                <i class="material-icons">download</i>
+                {{ $t("buttons.download") }}
               </div>
             </a>
             <a

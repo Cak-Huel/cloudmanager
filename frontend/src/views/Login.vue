@@ -8,34 +8,59 @@
       </p>
       <div v-if="error !== ''" class="wrong">{{ error }}</div>
 
-      <input
+      <md-outlined-text-field
         autofocus
-        class="input input--block"
+        style="width: 100%; margin-bottom: 1em;"
         type="text"
         autocapitalize="off"
-        v-model="username"
-        :placeholder="t('login.username')"
-      />
-      <input
-        class="input input--block"
-        type="password"
-        v-model="password"
-        :placeholder="t('login.password')"
-      />
-      <input
-        class="input input--block"
+        :value="username"
+        @input="username = ($event.target as HTMLInputElement).value"
+        :label="t('login.username')"
+      ></md-outlined-text-field>
+
+      <md-outlined-text-field
+        style="width: 100%; margin-bottom: 1em;"
+        :type="showPassword ? 'text' : 'password'"
+        :value="password"
+        @input="password = ($event.target as HTMLInputElement).value"
+        :label="t('login.password')"
+      >
+        <md-icon-button
+          slot="trailing-icon"
+          type="button"
+          @click.prevent="showPassword = !showPassword"
+          style="margin-right: 4px;"
+        >
+          <i class="material-icons">{{ showPassword ? 'visibility_off' : 'visibility' }}</i>
+        </md-icon-button>
+      </md-outlined-text-field>
+
+      <md-outlined-text-field
+        style="width: 100%; margin-bottom: 1.5em;"
         v-if="createMode"
-        type="password"
-        v-model="passwordConfirm"
-        :placeholder="t('login.passwordConfirm')"
-      />
+        :type="showConfirmPassword ? 'text' : 'password'"
+        :value="passwordConfirm"
+        @input="passwordConfirm = ($event.target as HTMLInputElement).value"
+        :label="t('login.passwordConfirm')"
+      >
+        <md-icon-button
+          slot="trailing-icon"
+          type="button"
+          @click.prevent="showConfirmPassword = !showConfirmPassword"
+          style="margin-right: 4px;"
+        >
+          <i class="material-icons">{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</i>
+        </md-icon-button>
+      </md-outlined-text-field>
 
       <div v-if="recaptcha" id="recaptcha"></div>
-      <input
-        class="button button--block"
+
+      <md-filled-button
+        style="width: 100%; margin-top: 0.5em; margin-bottom: 1em;"
         type="submit"
-        :value="createMode ? t('login.signup') : t('login.submit')"
-      />
+      >
+        {{ createMode ? t('login.signup') : t('login.submit') }}
+      </md-filled-button>
 
       <p @click="toggleMode" v-if="signup">
         {{ createMode ? t("login.loginInstead") : t("login.createAnAccount") }}
@@ -64,6 +89,8 @@ const error = ref<string>("");
 const username = ref<string>("");
 const password = ref<string>("");
 const passwordConfirm = ref<string>("");
+const showPassword = ref<boolean>(false);
+const showConfirmPassword = ref<boolean>(false);
 
 const route = useRoute();
 const router = useRouter();

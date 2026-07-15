@@ -128,7 +128,8 @@ export default {
   color: var(--textSecondary);
   display: none;
   border: 1px solid var(--borderPrimary);
-  border-radius: 0.1em;
+  border-radius: 16px !important;
+  box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.3) !important;
 }
 
 .dropdown-modal-list > div {

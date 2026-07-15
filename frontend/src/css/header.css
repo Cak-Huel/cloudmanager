@@ -1,8 +1,9 @@
 header {
   z-index: 1000;
-  background: var(--surfacePrimary);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--divider);
-  box-shadow: 0 0 5px var(--borderPrimary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* Softer shadow */
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +15,7 @@ header {
   align-items: center;
 }
 
-header > * {
+header>* {
   flex: 0 0 auto;
 }
 
@@ -37,7 +38,7 @@ header a:hover {
   color: inherit;
 }
 
-header > div:first-child > .action,
+header>div:first-child>.action,
 header img {
   margin-right: 1em;
 }
@@ -50,7 +51,7 @@ header .action span {
   display: none;
 }
 
-header > div div {
+header>div div {
   vertical-align: middle;
   position: relative;
 }
@@ -83,18 +84,26 @@ header .menu-button {
 
 #search #input {
   background: var(--surfaceSecondary);
-  border-color: var(--surfacePrimary);
+  border: 1px solid transparent;
   display: flex;
   height: 100%;
-  padding: 0em 0.75em;
-  border-radius: 0.3em;
-  transition: 0.1s ease all;
+  padding: 0em 1em;
+  border-radius: 28px;
+  /* Material 3 Search Bar Pill shape */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   z-index: 2;
 }
 
+#search #input:focus-within {
+  background: var(--surfacePrimary);
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 #search #input input::placeholder {
-  color: var(--textSecondary);
+  color: var(--textPrimary);
+  opacity: 0.7;
 }
 
 #search.active #input {
@@ -104,7 +113,7 @@ header .menu-button {
   height: 4em;
 }
 
-#search.active > div {
+#search.active>div {
   border-radius: 0 !important;
 }
 
@@ -113,8 +122,8 @@ header .menu-button {
   color: var(--textPrimary);
 }
 
-#search #input > .action,
-#search #input > i {
+#search #input>.action,
+#search #input>i {
   margin-right: 0.3em;
   user-select: none;
 }
@@ -124,6 +133,9 @@ header .menu-button {
   border: 0;
   background-color: transparent;
   padding: 0;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--textSecondary);
 }
 
 #search #result {
@@ -146,7 +158,7 @@ html[dir="rtl"] #search #result {
   direction: ltr;
 }
 
-#search #result > div > *:first-child {
+#search #result>div>*:first-child {
   margin-top: 0;
 }
 
@@ -155,7 +167,7 @@ html[dir="rtl"] #search #result {
 }
 
 /*** RTL - Keep search result LTR because it has paths (in english) ***/
-html[dir="rtl"] #search #result ul > * {
+html[dir="rtl"] #search #result ul>* {
   direction: ltr;
   text-align: left;
 }
@@ -175,7 +187,7 @@ html[dir="rtl"] #search #result ul > * {
   margin-bottom: 0.5em;
 }
 
-#search #result > div {
+#search #result>div {
   max-width: 45em;
   margin: 0 auto;
 }
@@ -196,7 +208,7 @@ html[dir="rtl"] #search #result ul > * {
   color: var(--iconTertiary);
 }
 
-#search.active #result > p > i {
+#search.active #result>p>i {
   text-align: center;
   margin: 0 auto;
   display: table;
@@ -205,36 +217,27 @@ html[dir="rtl"] #search #result ul > * {
 #search.active #result ul li a {
   display: flex;
   align-items: center;
-  padding: 0.3em 0;
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+#search.active #result ul li a:hover {
+  background-color: var(--hover);
 }
 
 #search.active #result ul li a i {
-  margin-right: 0.3em;
+  margin-right: 0.5em;
 }
-
-/* I dont think we need these anymore */
-/* #search::-webkit-input-placeholder {
-  color: var(--textPrimary);
-}
-
-#search::-moz-placeholder {
-  opacity: 1;
-  color: var(--textPrimary);
-}
-
-#search:-ms-input-placeholder {
-  color: var(--textPrimary);
-}
-
-#search #input input::placeholder {
-  color: var(--textPrimary);
-} */
 
 #search .boxes {
   border: 1px solid var(--borderPrimary);
-  box-shadow: 0 0 5px var(--borderPrimary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   background: var(--surfacePrimary);
   margin: 1em 0;
+  border-radius: 12px;
+  /* Material 3 Container Radius */
+  overflow: hidden;
 }
 
 #search .boxes h3 {
@@ -242,38 +245,48 @@ html[dir="rtl"] #search #result ul > * {
   font-weight: 500;
   font-size: 1em;
   color: var(--textSecondary);
-  padding: 0.5em;
+  padding: 0.8em 1em 0.4em;
 }
 
 html[dir="rtl"] #search .boxes h3 {
   text-align: right;
 }
 
-#search .boxes > div {
+#search .boxes>div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-right: -1em;
   margin-bottom: -1em;
+  padding: 1em;
 }
 
-#search .boxes > div > div {
-  background: var(--blue);
-  color: #fff;
+#search .boxes>div>div {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
   text-align: center;
   width: 10em;
-  padding: 1em;
+  padding: 1.2em 1em;
   cursor: pointer;
   margin-bottom: 1em;
   margin-right: 1em;
   flex-grow: 1;
+  border-radius: 12px;
+  /* Material 3 Card Radius */
+  transition: all 0.2s ease;
+}
+
+#search .boxes>div>div:hover {
+  filter: brightness(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 #search .boxes p {
-  margin: 1em 0 0;
+  margin: 0.8em 0 0;
+  font-weight: 500;
 }
 
 #search .boxes i {
-  color: #fff !important;
-  font-size: 3.5em;
+  color: var(--md-sys-color-primary) !important;
+  font-size: 2.2em;
 }

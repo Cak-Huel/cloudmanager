@@ -25,7 +25,7 @@
       />
 
       <action
-        icon="preview"
+        icon="visibility"
         :label="t('buttons.preview')"
         @action="preview()"
         v-show="isMarkdownFile"

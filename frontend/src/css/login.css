@@ -1,5 +1,5 @@
 #login {
-  background: var(--surfacePrimary);
+  background: var(--background); /* Changed from surfacePrimary to background for contrast */
   position: fixed;
   top: 0;
   left: 0;
@@ -8,16 +8,18 @@
 }
 
 #login img {
-  width: 4em;
-  height: 4em;
-  margin: 0 auto;
+  width: 5em;
+  height: 5em;
+  margin: 0 auto 0.5em;
   display: block;
 }
 
 #login h1 {
   text-align: center;
-  font-size: 2.5em;
-  margin: 0.4em 0 0.67em;
+  font-size: 2em;
+  font-weight: 400;
+  color: var(--textSecondary);
+  margin: 0 0 1.2em;
 }
 
 #login form {
@@ -25,31 +27,44 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 16em;
+  max-width: 22em;
   width: 90%;
+  padding: 2.5em 2em;
+  border-radius: 28px; /* Material 3 Card Radius */
+  background: var(--surfacePrimary);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.06), 0px 1px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--divider);
 }
 
 #login.recaptcha form {
-  min-width: 304px;
+  min-width: 340px;
 }
 
 #login #recaptcha {
-  margin: 0.5em 0 0;
+  margin: 0.5em 0 1em;
 }
 
 #login .wrong {
-  background: var(--red);
-  color: #fff;
-  padding: 0.5em;
+  background: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+  padding: 0.75em;
+  border-radius: 12px;
   text-align: center;
+  margin-bottom: 1.2em;
+  font-size: 0.9rem;
+  border: 1px solid var(--md-sys-color-error);
   animation: 0.2s opac forwards;
 }
 
 #login .logout-message {
-  background: var(--icon-orange);
-  color: #fff;
-  padding: 0.5em;
+  background: var(--surfaceSecondary);
+  color: var(--textSecondary);
+  padding: 0.75em;
+  border-radius: 12px;
   text-align: center;
+  margin-bottom: 1.2em;
+  font-size: 0.9rem;
+  border: 1px solid var(--divider);
   animation: 0.2s opac forwards;
   text-transform: none;
 }

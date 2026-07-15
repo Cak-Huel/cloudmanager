@@ -31,7 +31,8 @@
 #loading {
   background: var(--background);
 }
-#loading .spinner > div {
+
+#loading .spinner>div {
   background: var(--iconPrimary);
 }
 
@@ -42,7 +43,7 @@ main .spinner {
   padding: 1em 0;
 }
 
-main .spinner > div {
+main .spinner>div {
   width: 0.8em;
   height: 0.8em;
   margin: 0 0.1em;
@@ -69,9 +70,11 @@ main .spinner .bounce2 {
   0% {
     opacity: 0;
   }
+
   99% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -186,12 +189,12 @@ main .spinner .bounce2 {
   z-index: 19999;
 }
 
-#previewer header > .action i {
+#previewer header>.action i {
   color: #fff;
   text-shadow: 1px 1px 1px #000000;
 }
 
-#previewer header > title {
+#previewer header>title {
   white-space: nowrap;
   text-shadow: 1px 1px 1px #000000;
 }
@@ -249,20 +252,25 @@ main .spinner .bounce2 {
   font-size: 1.5em;
   color: #fff;
 }
+
 #previewer .preview .info .title {
   margin-bottom: 1em;
 }
+
 #previewer .preview .info .title i {
   display: block;
   margin-bottom: 0.1em;
   font-size: 4em;
 }
+
 #previewer .preview .info .button {
   display: inline-block;
 }
+
 #previewer .preview .info .button:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
+
 #previewer .preview .info .button i {
   display: block;
   margin-bottom: 4px;
@@ -279,7 +287,7 @@ main .spinner .bounce2 {
   color: rgba(255, 255, 255, 0.5);
 }
 
-#previewer > button {
+#previewer>button {
   margin: 0;
   position: fixed;
   top: 50%;
@@ -294,20 +302,20 @@ main .spinner .bounce2 {
   transition: 0.2s ease all;
 }
 
-#previewer > button.hidden {
+#previewer>button.hidden {
   opacity: 0;
   visibility: hidden;
 }
 
-#previewer > button > i {
+#previewer>button>i {
   padding: 0.4em;
 }
 
-#previewer > button:first-of-type {
+#previewer>button:first-of-type {
   left: 0.5em;
 }
 
-#previewer > button:last-of-type {
+#previewer>button:last-of-type {
   right: 0.5em;
 }
 
@@ -319,7 +327,7 @@ main .spinner .bounce2 {
   transform: translate(-50%, -50%);
 }
 
-#previewer .spinner > div {
+#previewer .spinner>div {
   width: 18px;
   height: 18px;
   background: var(--iconPrimary);
@@ -377,10 +385,10 @@ html[dir="rtl"] .breadcrumbs .chevron {
 .credits {
   font-size: 0.6em;
   margin: 3em 2.5em;
-  color: #a5a5a5;
+  color: var(--textSecondary);
 }
 
-.credits > span {
+.credits>span {
   display: block;
   margin: 0.3em 0;
 }
@@ -415,7 +423,7 @@ html[dir="rtl"] .breadcrumbs .chevron {
  *         SETTINGS RULES      *
  * * * * * * * * * * * * * * * */
 
-.rules > div {
+.rules>div {
   display: flex;
   align-items: center;
   margin: 0.5rem 0;
@@ -452,7 +460,7 @@ html[dir="rtl"] .card-content textarea {
   text-align: left;
 }
 
-html[dir="rtl"] .card-content .small + input {
+html[dir="rtl"] .card-content .small+input {
   direction: ltr;
   text-align: left;
 }

@@ -71,30 +71,32 @@ html[dir="rtl"] .dashboard #nav .wrapper {
 .dashboard #nav ul {
   list-style: none;
   display: flex;
-  color: var(--action);
+  color: var(--textPrimary);
   font-weight: 500;
   padding: 0;
   margin: 0 0 -2px 0;
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-align: center;
   justify-content: left;
 }
 
 .dashboard #nav ul li {
   position: relative;
-  padding: 1.5em 2em;
+  padding: 1.2em 1.8em;
   white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  transition: 0.1s ease-in-out all;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 .dashboard #nav ul li:hover {
-  background: var(--surfaceSecondary);
+  background: var(--hover);
+  border-radius: 8px 8px 0 0;
 }
 
 .dashboard #nav ul li.active {
-  border-color: var(--blue);
-  color: var(--blue);
+  border-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary);
 }
 
 .dashboard #nav ul li.active::before {
@@ -104,13 +106,15 @@ html[dir="rtl"] .dashboard #nav .wrapper {
   top: 0;
   left: 0;
   content: "";
-  background: var(--blue);
-  opacity: 0.08;
+  background: var(--md-sys-color-primary);
+  opacity: 0.05;
+  border-radius: 8px 8px 0 0;
 }
 
 .dashboard #nav i {
-  font-size: 1em;
+  font-size: 1.1em;
   vertical-align: middle;
+  margin-right: 0.4em;
 }
 
 table {
@@ -161,11 +165,9 @@ table tr > *:last-child {
   margin: 0 0 1rem 0;
   background: var(--surfacePrimary);
   color: var(--textSecondary);
-  border-radius: 2px;
-  box-shadow:
-    0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12),
-    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  border-radius: 16px; /* Material 3 Card Radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.05); /* Softer M3-style shadow */
+  border: 1px solid var(--divider);
   overflow: auto;
 }
 
@@ -174,11 +176,12 @@ table tr > *:last-child {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 25em;
+  max-width: 28em;
   width: 90%;
-  max-height: 95%;
-  /* animation-duration: 0.3s;
-  animation-fill-mode: forwards; */
+  max-height: 90%;
+  border-radius: 28px; /* Material 3 Dialog Radius */
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.08); /* Elevated dialog shadow */
+  border: 1px solid var(--divider);
 }
 
 .card > * > *:first-child {
@@ -190,7 +193,7 @@ table tr > *:last-child {
 }
 
 .card .card-title {
-  padding: 1.5em 1em 1em;
+  padding: 1.5em 1.5em 1em;
   display: flex;
 }
 
@@ -204,7 +207,7 @@ html[dir="rtl"] .card .card-title > *:first-child {
 }
 
 .card > div {
-  padding: 1em 1em;
+  padding: 1.25em 1.5em;
 }
 
 .card > div:first-child {
@@ -253,7 +256,20 @@ body.rtl .card .card-action {
 }
 
 .card#download {
-  max-width: 15em;
+  max-width: 32em;
+  width: 95%;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .download-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .card#share input,
@@ -354,33 +370,35 @@ body.rtl .card .card-action {
 .file-list li {
   width: 100%;
   user-select: none;
-  border-radius: 0.2em;
-  padding: 0.3em;
+  border-radius: 8px; /* Material 3 List Item radius */
+  padding: 0.6em 0.8em;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
 }
 
 .file-list li[aria-selected="true"] {
-  background: var(--blue) !important;
-  color: var(--iconSecondary) !important;
-  transition: 0.1s ease all;
+  background: var(--md-sys-color-primary-container) !important;
+  color: var(--md-sys-color-on-primary-container) !important;
 }
 
 .file-list li:hover {
-  background: var(--surfaceSecondary);
+  background: var(--hover);
   cursor: pointer;
 }
 
 .file-list li:before {
   content: "folder";
-  color: var(--textPrimary);
+  color: var(--md-sys-color-primary);
   vertical-align: middle;
-  line-height: 1.4;
+  line-height: 1;
   font-family: "Material Icons";
-  font-size: 1.75em;
-  margin-right: 0.25em;
+  font-size: 1.5em;
+  margin-right: 0.5em;
 }
 
 .file-list li[aria-selected="true"]:before {
-  color: var(--iconSecondary);
+  color: var(--md-sys-color-on-primary-container);
 }
 
 .help {

@@ -12,13 +12,23 @@
 
     <p v-if="!isDefault">
       <label for="password">{{ t("settings.password") }}</label>
-      <input
-        class="input input--block"
-        type="password"
-        :placeholder="passwordPlaceholder"
-        v-model="user.password"
-        id="password"
-      />
+      <div style="position: relative; display: flex; align-items: center;">
+        <input
+          class="input input--block"
+          :type="showPassword ? 'text' : 'password'"
+          :placeholder="passwordPlaceholder"
+          v-model="user.password"
+          id="password"
+          style="padding-right: 2.5em; width: 100%;"
+        />
+        <i
+          class="material-icons"
+          @click="showPassword = !showPassword"
+          style="position: absolute; right: 12px; cursor: pointer; user-select: none; color: var(--textSecondary); font-size: 1.25rem;"
+        >
+          {{ showPassword ? 'visibility_off' : 'visibility' }}
+        </i>
+      </div>
     </p>
 
     <p>
@@ -79,6 +89,7 @@ const { t } = useI18n();
 
 const createUserDirData = ref<boolean | null>(null);
 const originalUserScope = ref<string | null>(null);
+const showPassword = ref<boolean>(false);
 
 const props = defineProps<{
   user: IUserForm;

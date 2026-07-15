@@ -11,117 +11,18 @@
       />
 
       <template #actions>
-        <template v-if="!isMobile">
-          <action
-            v-if="headerButtons.share"
-            icon="share"
-            :label="t('buttons.share')"
-            show="share"
-          />
-          <action
-            v-if="headerButtons.rename"
-            icon="mode_edit"
-            :label="t('buttons.rename')"
-            show="rename"
-          />
-          <action
-            v-if="headerButtons.copy"
-            id="copy-button"
-            icon="content_copy"
-            :label="t('buttons.copyFile')"
-            show="copy"
-          />
-          <action
-            v-if="headerButtons.move"
-            id="move-button"
-            icon="forward"
-            :label="t('buttons.moveFile')"
-            show="move"
-          />
-          <action
-            v-if="headerButtons.delete"
-            id="delete-button"
-            icon="delete"
-            :label="t('buttons.delete')"
-            show="delete"
-          />
-        </template>
-
-        <action
-          v-if="headerButtons.shell"
-          icon="code"
-          :label="t('buttons.shell')"
-          @action="layoutStore.toggleShell"
-        />
         <action
           :icon="viewIcon"
           :label="t('buttons.switchView')"
           @action="switchView"
         />
         <action
-          v-if="headerButtons.download"
-          icon="file_download"
-          :label="t('buttons.download')"
-          @action="download"
-          :counter="fileStore.selectedCount"
-        />
-        <action
-          v-if="headerButtons.upload"
-          icon="file_upload"
-          id="upload-button"
-          :label="t('buttons.upload')"
-          @action="uploadFunc"
-        />
-        <action icon="info" :label="t('buttons.info')" show="info" />
-        <action
-          icon="check_circle"
+          icon="checklist"
           :label="t('buttons.selectMultiple')"
           @action="toggleMultipleSelection"
         />
       </template>
     </header-bar>
-
-    <div
-      v-if="isMobile"
-      id="file-selection"
-      :class="{
-        'file-selection-margin-bottom': fileStore.multiple,
-      }"
-    >
-      <span v-if="fileStore.selectedCount > 0">
-        {{ t("prompts.filesSelected", fileStore.selectedCount) }}
-      </span>
-      <action
-        v-if="headerButtons.share"
-        icon="share"
-        :label="t('buttons.share')"
-        show="share"
-      />
-      <action
-        v-if="headerButtons.rename"
-        icon="mode_edit"
-        :label="t('buttons.rename')"
-        show="rename"
-      />
-      <action
-        v-if="headerButtons.copy"
-        icon="content_copy"
-        :label="t('buttons.copyFile')"
-        show="copy"
-      />
-      <action
-        v-if="headerButtons.move"
-        icon="forward"
-        :label="t('buttons.moveFile')"
-        show="move"
-      />
-      <action
-        v-if="headerButtons.delete"
-        icon="delete"
-        :label="t('buttons.delete')"
-        show="delete"
-      />
-    </div>
 
     <div v-if="layoutStore.loading">
       <h2 class="message delayed">
@@ -167,6 +68,7 @@
         data-clear-on-click="true"
         :class="authStore.user?.viewMode ?? ''"
         @click="handleEmptyAreaClick"
+        @contextmenu="showContextMenu"
       >
         <div>
           <div class="item header">
@@ -196,6 +98,7 @@
                 <span>{{ t("files.size") }}</span>
                 <i class="material-icons">{{ sizeIcon }}</i>
               </p>
+
               <p
                 :class="{ active: modifiedSorted }"
                 class="modified"
@@ -231,6 +134,7 @@
             v-bind:type="item.type"
             v-bind:size="item.size"
             v-bind:path="item.path"
+            @open-menu="handleItemMenuOpen"
           >
           </item>
         </div>
@@ -254,6 +158,7 @@
             v-bind:type="item.type"
             v-bind:size="item.size"
             v-bind:path="item.path"
+            @open-menu="handleItemMenuOpen"
           >
           </item>
         </div>
@@ -262,47 +167,70 @@
           :pos="contextMenuPos"
           @hide="hideContextMenu"
         >
-          <action
-            v-if="headerButtons.share"
-            icon="share"
-            :label="t('buttons.share')"
-            show="share"
-          />
-          <action
-            v-if="headerButtons.rename"
-            icon="mode_edit"
-            :label="t('buttons.rename')"
-            show="rename"
-          />
-          <action
-            v-if="headerButtons.copy"
-            id="copy-button"
-            icon="content_copy"
-            :label="t('buttons.copyFile')"
-            show="copy"
-          />
-          <action
-            v-if="headerButtons.move"
-            id="move-button"
-            icon="forward"
-            :label="t('buttons.moveFile')"
-            show="move"
-          />
-          <action
-            v-if="headerButtons.delete"
-            id="delete-button"
-            icon="delete"
-            :label="t('buttons.delete')"
-            show="delete"
-          />
-          <action
-            v-if="headerButtons.download"
-            icon="file_download"
-            :label="t('buttons.download')"
-            @action="download"
-            :counter="fileStore.selectedCount"
-          />
-          <action icon="info" :label="t('buttons.info')" show="info" />
+          <template v-if="fileStore.selectedCount > 0">
+            <action
+              v-if="headerButtons.share"
+              icon="share"
+              :label="t('buttons.share')"
+              show="share"
+            />
+            <action
+              v-if="headerButtons.rename"
+              icon="mode_edit"
+              :label="t('buttons.rename')"
+              show="rename"
+            />
+            <action
+              v-if="headerButtons.copy"
+              id="copy-button"
+              icon="content_copy"
+              :label="t('buttons.copyFile')"
+              show="copy"
+            />
+            <action
+              v-if="headerButtons.move"
+              id="move-button"
+              icon="forward"
+              :label="t('buttons.moveFile')"
+              show="move"
+            />
+            <action
+              v-if="headerButtons.delete"
+              id="delete-button"
+              icon="delete"
+              :label="t('buttons.delete')"
+              show="delete"
+            />
+            <action
+              v-if="headerButtons.download"
+              icon="file_download"
+              :label="t('buttons.download')"
+              @action="download"
+            />
+            <action icon="info" :label="t('buttons.info')" show="info" />
+          </template>
+          <template v-else-if="authStore.user?.perm.create">
+            <action
+              icon="create_new_folder"
+              :label="t('sidebar.newFolder')"
+              @action="layoutStore.showHover('newDir')"
+            />
+            <action
+              icon="note_add"
+              :label="t('sidebar.newFile')"
+              @action="layoutStore.showHover('newFile')"
+            />
+            <action
+              icon="file_upload"
+              :label="t('buttons.upload') + ' ' + t('buttons.file')"
+              @action="clickUploadInput(false)"
+            />
+            <action
+              icon="drive_folder_upload"
+              :label="t('buttons.upload') + ' ' + t('buttons.folder')"
+              @action="clickUploadInput(true)"
+            />
+          </template>
         </context-menu>
 
         <input
@@ -464,13 +392,11 @@ const modifiedIcon = computed(() => {
 
 const viewIcon = computed(() => {
   const icons = {
-    list: "view_module",
-    mosaic: "grid_view",
-    "mosaic gallery": "view_list",
+    list: "grid_view",
+    mosaic: "view_list",
   };
-  return authStore.user === null
-    ? icons["list"]
-    : icons[authStore.user.viewMode];
+  const mode = authStore.user?.viewMode === "mosaic" ? "mosaic" : "list";
+  return icons[mode];
 });
 
 const headerButtons = computed(() => {
@@ -1008,16 +934,11 @@ const download = () => {
 const switchView = async () => {
   layoutStore.closeHovers();
 
-  const modes = {
-    list: "mosaic",
-    mosaic: "mosaic gallery",
-    "mosaic gallery": "list",
-  };
+  const newMode = authStore.user?.viewMode === "mosaic" ? "list" : "mosaic";
 
   const data = {
     id: authStore.user?.id,
-    viewMode: (modes[authStore.user?.viewMode ?? "list"] ||
-      "list") as ViewModeType,
+    viewMode: newMode as ViewModeType,
   };
 
   users.update(data, ["viewMode"]).catch($showError);
@@ -1091,11 +1012,32 @@ const revealPreviousItem = () => {
 
 const showContextMenu = (event: MouseEvent) => {
   event.preventDefault();
+  const target = event.target as HTMLElement;
+  if (target && !target.closest(".item")) {
+    fileStore.selected = [];
+  }
   isContextMenuVisible.value = true;
   contextMenuPos.value = {
     x: event.clientX + 8,
     y: event.clientY + Math.floor(window.scrollY),
   };
+};
+
+const handleItemMenuOpen = (event: MouseEvent) => {
+  event.preventDefault();
+  isContextMenuVisible.value = true;
+  contextMenuPos.value = {
+    x: event.clientX - 180,
+    y: event.clientY + Math.floor(window.scrollY),
+  };
+};
+
+const clickUploadInput = (isFolder: boolean) => {
+  if (isFolder) {
+    document.getElementById("upload-folder-input")?.click();
+  } else {
+    document.getElementById("upload-input")?.click();
+  }
 };
 
 const hideContextMenu = () => {
@@ -1106,7 +1048,7 @@ const handleEmptyAreaClick = (e: MouseEvent) => {
   const target = e.target;
   if (!(target instanceof HTMLElement)) return;
 
-  if (target.dataset.clearOnClick === "true") {
+  if (!target.closest(".item")) {
     fileStore.selected = [];
   }
 };

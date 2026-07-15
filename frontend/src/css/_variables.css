@@ -1,58 +1,127 @@
 :root {
-  --blue: #2196f3;
-  --dark-blue: #1e88e5;
-  --red: #f44336;
-  --dark-red: #d32f2f;
-  --moon-grey: #f2f2f2;
+  /* Material 3 Color Tokens (Light Mode) */
+  --md-sys-color-primary: #0061a4;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #d1e4ff;
+  --md-sys-color-on-primary-container: #001d36;
+  --md-sys-color-secondary: #535f70;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #d7e3f7;
+  --md-sys-color-on-secondary-container: #101c2b;
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-background: #fdfcff;
+  --md-sys-color-on-background: #1a1c1e;
+  --md-sys-color-surface: #fdfcff;
+  --md-sys-color-on-surface: #1a1c1e;
+  --md-sys-color-surface-variant: #dfe2eb;
+  --md-sys-color-on-surface-variant: #43474e;
+  --md-sys-color-outline: #73777f;
+  --md-sys-color-outline-variant: #c3c7d0;
+  --md-sys-color-inverse-surface: #2f3033;
+  --md-sys-color-inverse-on-surface: #f1f0f4;
 
-  --icon-red: #da4453;
-  --icon-orange: #f47750;
-  --icon-yellow: #fdbc4b;
-  --icon-green: #2ecc71;
-  --icon-blue: #1d99f3;
-  --icon-violet: #9b59b6;
+  /* Map old variables to M3 tokens */
+  --blue: var(--md-sys-color-primary);
+  --dark-blue: #00497d;
+  --red: var(--md-sys-color-error);
+  --dark-red: #93000a;
+  --moon-grey: var(--md-sys-color-surface-variant);
 
-  --input-red: rgb(252, 208, 205);
-  --input-green: rgb(201, 242, 218);
+  --icon-red: var(--md-sys-color-error);
+  --icon-orange: #b06000;
+  --icon-yellow: #695f00;
+  --icon-green: #006e38;
+  --icon-blue: var(--md-sys-color-primary);
+  --icon-violet: #800080;
 
-  --item-selected: white;
+  --input-red: var(--md-sys-color-error-container);
+  --input-green: #d2e7d6;
 
-  --action: rgb(84, 110, 122);
+  --item-selected: var(--md-sys-color-primary-container);
 
-  --background: rgb(250, 250, 250);
-  --surfacePrimary: rgb(255, 255, 255);
-  --surfaceSecondary: rgb(230, 230, 230);
-  --divider: rgba(0, 0, 0, 0.05);
-  --iconPrimary: var(--icon-blue);
-  --iconSecondary: rgb(255, 255, 255);
-  --iconTertiary: rgb(204, 204, 204);
-  --textPrimary: rgb(111, 111, 111);
-  --textSecondary: rgb(51, 51, 51);
-  --hover: rgba(0, 0, 0, 0.1);
-  --borderPrimary: rgba(0, 0, 0, 0.1);
-  --borderSecondary: rgba(0, 0, 0, 0.2);
+  --action: var(--md-sys-color-on-surface-variant);
+
+  --background: var(--md-sys-color-background);
+  --surfacePrimary: var(--md-sys-color-surface);
+  --surfaceSecondary: var(--md-sys-color-secondary-container);
+  --divider: var(--md-sys-color-outline-variant);
+  --iconPrimary: var(--md-sys-color-primary);
+  --iconSecondary: var(--md-sys-color-on-primary);
+  --iconTertiary: var(--md-sys-color-outline);
+  --textPrimary: var(--md-sys-color-on-surface-variant);
+  --textSecondary: var(--md-sys-color-on-surface);
+  --hover: rgba(67, 71, 78, 0.08);
+  --borderPrimary: var(--md-sys-color-outline-variant);
+  --borderSecondary: var(--md-sys-color-outline);
   --dividerPrimary: rgba(255, 255, 255, 0.4);
   --dividerSecondary: rgba(255, 255, 255, 0.9);
+  --header-bg: #f7f7f7;
+  --sidebar-bg: #f7f7f7;
 }
 
 :root.dark {
-  --input-red: rgb(115, 48, 45);
-  --input-green: rgb(20, 122, 65);
+  /* Material 3 Color Tokens (Dark Mode) */
+  --md-sys-color-primary: #9ecaff;
+  --md-sys-color-on-primary: #003258;
+  --md-sys-color-primary-container: #00497d;
+  --md-sys-color-on-primary-container: #d1e4ff;
+  --md-sys-color-secondary: #bbc7db;
+  --md-sys-color-on-secondary: #253140;
+  --md-sys-color-secondary-container: #3b4858;
+  --md-sys-color-on-secondary-container: #d7e3f7;
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000a;
+  --md-sys-color-on-error-container: #ffdad6;
+  --md-sys-color-background: #1a1c1e;
+  --md-sys-color-on-background: #e2e2e6;
+  --md-sys-color-surface: #1a1c1e;
+  --md-sys-color-on-surface: #e2e2e6;
+  --md-sys-color-surface-variant: #43474e;
+  --md-sys-color-on-surface-variant: #c3c7d0;
+  --md-sys-color-outline: #8d9199;
+  --md-sys-color-outline-variant: #43474e;
+  --md-sys-color-inverse-surface: #e2e2e6;
+  --md-sys-color-inverse-on-surface: #2f3033;
 
-  --action: rgb(255, 255, 255);
+  /* Map old variables to M3 tokens */
+  --blue: var(--md-sys-color-primary);
+  --dark-blue: #d1e4ff;
+  --red: var(--md-sys-color-error);
+  --dark-red: #ffdad6;
+  --moon-grey: var(--md-sys-color-surface-variant);
 
-  --background: rgb(20, 29, 36);
-  --surfacePrimary: rgb(32, 41, 47);
-  --surfaceSecondary: rgb(58, 65, 71);
-  --textPrimary: rgba(255, 255, 255, 0.6);
-  --textSecondary: rgba(255, 255, 255, 0.87);
-  --divider: rgba(255, 255, 255, 0.12);
-  --iconPrimary: rgb(255, 255, 255);
-  --iconSecondary: rgb(255, 255, 255);
-  --iconTertiary: rgb(255, 255, 255);
-  --hover: rgba(255, 255, 255, 0.1);
-  --borderPrimary: rgba(255, 255, 255, 0.05);
-  --borderSecondary: rgba(255, 255, 255, 0.15);
+  --icon-red: var(--md-sys-color-error);
+  --icon-orange: #ffb865;
+  --icon-yellow: #e2e582;
+  --icon-green: #81d898;
+  --icon-blue: var(--md-sys-color-primary);
+  --icon-violet: #ebb6ff;
+
+  --input-red: var(--md-sys-color-error-container);
+  --input-green: #11361c;
+
+  --item-selected: var(--md-sys-color-primary-container);
+
+  --action: var(--md-sys-color-on-surface-variant);
+
+  --background: var(--md-sys-color-background);
+  --surfacePrimary: var(--md-sys-color-surface);
+  --surfaceSecondary: var(--md-sys-color-secondary-container);
+  --divider: var(--md-sys-color-outline-variant);
+  --iconPrimary: var(--md-sys-color-primary);
+  --iconSecondary: var(--md-sys-color-on-primary);
+  --iconTertiary: var(--md-sys-color-outline);
+  --textPrimary: var(--md-sys-color-on-surface-variant);
+  --textSecondary: var(--md-sys-color-on-surface);
+  --hover: rgba(195, 199, 208, 0.08);
+  --borderPrimary: var(--md-sys-color-outline-variant);
+  --borderSecondary: var(--md-sys-color-outline);
   --dividerPrimary: rgba(30, 30, 30, 0.4);
   --dividerSecondary: rgba(30, 30, 30, 0.6);
+  --header-bg: var(--surfacePrimary);
+  --sidebar-bg: var(--surfacePrimary);
 }

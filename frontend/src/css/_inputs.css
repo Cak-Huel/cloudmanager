@@ -1,16 +1,22 @@
 .input {
   background: var(--surfacePrimary);
   color: var(--textSecondary);
-  border: 1px solid var(--borderPrimary);
-  border-radius: 0.1em;
-  padding: 0.5em 1em;
-  transition: 0.2s ease all;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 8px; /* Material 3 styled rounded corners */
+  padding: 0.75em 1em;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 0;
 }
 
-.input:hover,
+.input:hover {
+  border-color: var(--md-sys-color-on-surface);
+}
+
 .input:focus {
-  border-color: var(--borderSecondary);
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 1px var(--md-sys-color-primary);
 }
 
 .input--block {
@@ -20,7 +26,7 @@
 }
 
 .input--textarea {
-  line-height: 1.15;
+  line-height: 1.5;
   font-family: monospace;
   min-height: 10em;
   resize: vertical;
@@ -28,8 +34,10 @@
 
 .input--red {
   background: var(--input-red) !important;
+  border-color: var(--md-sys-color-error);
 }
 
 .input--green {
   background: var(--input-green) !important;
+  border-color: var(--md-sys-color-on-success-container, #008744);
 }

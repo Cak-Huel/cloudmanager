@@ -14,7 +14,7 @@ html[dir="rtl"] #listing {
   overflow: hidden;
 }
 
-#listing > div {
+#listing>div {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -92,17 +92,16 @@ html[dir="rtl"] #listing {
 #listing.mosaic .item {
   width: calc(33% - 1em);
   margin: 0.5em;
-  padding: 0.5em;
-  border-radius: 0.2em;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.06),
-    0 1px 2px rgba(0, 0, 0, 0.12);
+  padding: 0.75em;
+  border-radius: 12px;
+  /* Material 3 Card Radius */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--divider);
 }
 
 #listing.mosaic .item:hover {
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.24) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+  border-color: var(--borderSecondary);
 }
 
 #listing.mosaic .header {
@@ -162,9 +161,8 @@ html[dir="rtl"] #listing {
 #listing.list .item {
   width: 100%;
   margin: 0;
-  border: 1px solid var(--borderPrimary);
+  border-bottom: 1px solid var(--borderPrimary);
   padding: 1em;
-  border-top: 0;
 }
 
 #listing.list h2 {
@@ -172,8 +170,12 @@ html[dir="rtl"] #listing {
 }
 
 #listing .item[aria-selected="true"] {
-  background: var(--blue) !important;
-  color: var(--iconSecondary) !important;
+  background: var(--md-sys-color-primary-container) !important;
+  color: var(--md-sys-color-on-primary-container) !important;
+}
+
+#listing .item[aria-selected="true"] i {
+  color: var(--md-sys-color-primary) !important;
 }
 
 #listing.list .item div:first-of-type {
@@ -223,8 +225,8 @@ html[dir="rtl"] #listing {
   border-bottom: 1px solid var(--borderPrimary);
 }
 
-#listing.list .item.header > div {
-  width: 100%;
+#listing.list .item.header>div {
+  width: 95%;
 }
 
 #listing.list .item.header .name {
@@ -262,22 +264,109 @@ html[dir="rtl"] #listing {
 
 #listing #multiple-selection {
   position: fixed;
-  bottom: -4em;
-  left: 0;
+  bottom: -5em;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 99999;
-  width: 100%;
-  background-color: var(--blue);
-  height: 4em;
-  padding: 0.5em 0.5em 0.5em 1em;
+  width: 90%;
+  max-width: 36em;
+  background-color: var(--md-sys-color-inverse-surface);
+  height: 4.5em;
+  padding: 0.5em 1.5em;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  transition: 0.2s ease bottom;
+  border-radius: 100px;
+  /* Pill shaped action bar */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #listing #multiple-selection.active {
-  bottom: 0;
+  bottom: 1.5em;
 }
 
 #listing #multiple-selection p,
 #listing #multiple-selection i {
-  color: var(--iconSecondary);
+  color: var(--md-sys-color-inverse-on-surface) !important;
+}
+
+#listing.list .item .name {
+  width: 45% !important;
+}
+
+#listing.list .item .size {
+  width: 20% !important;
+}
+
+#listing.list .item .modified {
+  width: 25% !important;
+  display: block;
+}
+
+/* Style for three-dot menu button on file/folder items */
+.item-more-button {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--textSecondary) !important;
+  opacity: 1 !important;
+  transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+  z-index: 10 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.item-more-button:hover {
+  background-color: var(--hover) !important;
+  color: var(--textPrimary) !important;
+}
+
+.item-more-button i {
+  font-size: 1.25rem !important;
+  margin: 0 !important;
+  color: inherit !important;
+}
+
+/* Ensure only the more_vert icon content is displayed in the three-dot button */
+.item-more-button i::before {
+  content: "more_vert" !important;
+}
+
+/* Show the three-dot button when hovering the item in any layout */
+#listing .item:hover .item-more-button,
+#listing .item .item-more-button:focus-within {
+  opacity: 1 !important;
+}
+
+/* Positioning inside list view items */
+#listing.list .item div:last-of-type {
+  position: relative;
+}
+
+#listing.list .item .item-more-button {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Positioning inside grid/mosaic view items */
+#listing.mosaic .item {
+  position: relative !important;
+}
+
+#listing.mosaic .item .item-more-button {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+}
+
+/* Adjust grid/mosaic item name area so it doesn't overlap the absolute more-button */
+#listing.mosaic .item div:last-of-type {
+  padding-right: 28px !important;
 }

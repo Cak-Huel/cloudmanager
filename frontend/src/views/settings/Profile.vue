@@ -63,29 +63,60 @@
         </div>
 
         <div class="card-content">
-          <input
-            :class="passwordClass"
-            type="password"
-            :placeholder="t('settings.newPassword')"
-            v-model="password"
-            name="password"
-          />
-          <input
-            :class="passwordClass"
-            type="password"
-            :placeholder="t('settings.newPasswordConfirm')"
-            v-model="passwordConf"
-            name="passwordConf"
-          />
-          <input
-            v-if="isCurrentPasswordRequired"
-            :class="passwordClass"
-            type="password"
-            :placeholder="t('settings.currentPassword')"
-            v-model="currentPassword"
-            name="current_password"
-            autocomplete="current-password"
-          />
+          <div style="position: relative; display: flex; align-items: center; margin-bottom: 1em;">
+            <input
+              :class="passwordClass"
+              :type="showPass ? 'text' : 'password'"
+              :placeholder="t('settings.newPassword')"
+              v-model="password"
+              name="password"
+              style="padding-right: 2.5em; margin-bottom: 0; width: 100%;"
+            />
+            <i
+              class="material-icons"
+              @click="showPass = !showPass"
+              style="position: absolute; right: 12px; cursor: pointer; user-select: none; color: var(--textSecondary); font-size: 1.25rem;"
+            >
+              {{ showPass ? 'visibility_off' : 'visibility' }}
+            </i>
+          </div>
+
+          <div style="position: relative; display: flex; align-items: center; margin-bottom: 1em;">
+            <input
+              :class="passwordClass"
+              :type="showConf ? 'text' : 'password'"
+              :placeholder="t('settings.newPasswordConfirm')"
+              v-model="passwordConf"
+              name="passwordConf"
+              style="padding-right: 2.5em; margin-bottom: 0; width: 100%;"
+            />
+            <i
+              class="material-icons"
+              @click="showConf = !showConf"
+              style="position: absolute; right: 12px; cursor: pointer; user-select: none; color: var(--textSecondary); font-size: 1.25rem;"
+            >
+              {{ showConf ? 'visibility_off' : 'visibility' }}
+            </i>
+          </div>
+
+          <div v-if="isCurrentPasswordRequired" style="position: relative; display: flex; align-items: center; margin-bottom: 1em;">
+            <input
+              :class="passwordClass"
+              :type="showCurrent ? 'text' : 'password'"
+              :placeholder="t('settings.currentPassword')"
+              v-model="currentPassword"
+              name="current_password"
+              autocomplete="current-password"
+              style="padding-right: 2.5em; margin-bottom: 0; width: 100%;"
+            />
+            <i
+              class="material-icons"
+              @click="showCurrent = !showCurrent"
+              style="position: absolute; right: 12px; cursor: pointer; user-select: none; color: var(--textSecondary); font-size: 1.25rem;"
+            >
+              {{ showCurrent ? 'visibility_off' : 'visibility' }}
+            </i>
+          </div>
         </div>
 
         <div class="card-action">
@@ -121,6 +152,9 @@ const $showError = inject<IToastError>("$showError")!;
 const password = ref<string>("");
 const passwordConf = ref<string>("");
 const currentPassword = ref<string>("");
+const showPass = ref<boolean>(false);
+const showConf = ref<boolean>(false);
+const showCurrent = ref<boolean>(false);
 const isCurrentPasswordRequired = ref<boolean>(false);
 const hideDotfiles = ref<boolean>(false);
 const singleClick = ref<boolean>(false);

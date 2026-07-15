@@ -3,15 +3,20 @@ import "ace-builds";
 import { themesByName } from "ace-builds/src-noconflict/ext-themelist";
 
 export const getTheme = (): UserTheme => {
+  const saved = localStorage.getItem("theme") as UserTheme;
+  if (saved) return saved;
   return (document.documentElement.className as UserTheme) || theme;
 };
 
 export const setTheme = (theme: UserTheme) => {
   const html = document.documentElement;
   if (!theme) {
-    html.className = getMediaPreference();
+    const pref = getMediaPreference();
+    html.className = pref;
+    localStorage.setItem("theme", pref);
   } else {
     html.className = theme;
+    localStorage.setItem("theme", theme);
   }
 };
 

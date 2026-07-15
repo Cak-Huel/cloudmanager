@@ -39,6 +39,16 @@
       <p class="modified">
         <time :datetime="modified">{{ humanTime() }}</time>
       </p>
+
+      <button
+        v-if="!readOnly"
+        class="item-more-button"
+        @click.stop="openItemMenu"
+        type="button"
+        aria-label="More actions"
+      >
+        <i class="material-icons"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -82,6 +92,13 @@ const props = defineProps<{
 const authStore = useAuthStore();
 const fileStore = useFileStore();
 const layoutStore = useLayoutStore();
+
+const emit = defineEmits(["open-menu"]);
+
+const openItemMenu = (event: MouseEvent) => {
+  fileStore.selected = [props.index];
+  emit("open-menu", event);
+};
 
 const singleClick = computed(
   () => !props.readOnly && authStore.user?.singleClick
