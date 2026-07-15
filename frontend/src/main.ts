@@ -20,6 +20,37 @@ import duration from "dayjs/plugin/duration";
 
 import "./css/styles.css";
 
+// Impor Komponen Material 3 (Lengkap untuk Dasbor & File Manager)
+// Buttons
+import "@material/web/button/filled-button.js";
+import "@material/web/button/outlined-button.js";
+import "@material/web/iconbutton/icon-button.js";
+import "@material/web/fab/fab.js";
+
+// Forms & Inputs
+import "@material/web/checkbox/checkbox.js";
+import "@material/web/radio/radio.js";
+import "@material/web/switch/switch.js";
+import "@material/web/textfield/filled-text-field.js";
+import "@material/web/textfield/outlined-text-field.js";
+
+// Layout & Navigation
+import "@material/web/tabs/tabs.js";
+import "@material/web/tabs/primary-tab.js";
+import "@material/web/tabs/secondary-tab.js";
+import "@material/web/list/list.js";
+import "@material/web/list/list-item.js";
+import "@material/web/divider/divider.js";
+
+// Menus & Popups
+import "@material/web/menu/menu.js";
+import "@material/web/menu/menu-item.js";
+import "@material/web/dialog/dialog.js";
+
+// Feedback / Progress
+import "@material/web/progress/circular-progress.js";
+import "@material/web/progress/linear-progress.js";
+
 // register dayjs plugins globally
 dayjs.extend(localizedFormat);
 dayjs.extend(relativeTime);

@@ -6,7 +6,13 @@ import legacy from "@vitejs/plugin-legacy";
 import { compression } from "vite-plugin-compression2";
 
 const plugins = [
-  vue(),
+  vue({
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag.startsWith("md-"),
+      },
+    },
+  }),
   VueI18nPlugin({
     include: [path.resolve(__dirname, "./src/i18n/**/*.json")],
   }),
