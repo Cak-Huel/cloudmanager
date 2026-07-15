@@ -1,13 +1,14 @@
 services:
-  filebrowser:
-    container_name: filebrowser
-    image: filebrowser/filebrowser:latest
+  cloudmanager:
+    container_name: cloudmanager
+    image: cakhullab/cloudmanager:latest
     networks:
-      - filebrowser
+      - cloudmanager
     ports:
       - 8000:80
     volumes:
-      - filebrowser:/flux/vault
+      - /home/cak-hul/Documents:/srv
+      - cloudmanager_db:/database
     environment:
       - FB_REDIS_CACHE_URL=redis://default:filebrowser@redis:6379 # Use rediss:// for ssl
 
@@ -15,18 +16,19 @@ services:
     container_name: redis
     image: redis:latest
     networks:
-      - filebrowser
+      - cloudmanager
     command:
       - sh
       - -c
       - |
         cat > /tmp/users.acl <<EOF
-        user default on >filebrowser ~* +@all
+        user default on >cloudmanager ~* +@all
         EOF
         redis-server --aclfile /tmp/users.acl
 
 networks:
-  filebrowser:
+  cloudmanager:
 
 volumes:
-  filebrowser:
+  cloudmanager:
+  cloudmanager_db:
