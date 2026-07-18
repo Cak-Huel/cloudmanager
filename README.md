@@ -1,31 +1,28 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/filebrowser/filebrowser/master/branding/banner.png" width="550"/>
+  <img src="branding/banner.png" width="550"/>
 </p>
 
-[![Build](https://github.com/filebrowser/filebrowser/actions/workflows/ci.yaml/badge.svg)](https://github.com/filebrowser/filebrowser/actions/workflows/ci.yaml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/filebrowser/filebrowser/v2)](https://goreportcard.com/report/github.com/filebrowser/filebrowser/v2)
-[![Version](https://img.shields.io/github/release/filebrowser/filebrowser.svg)](https://github.com/filebrowser/filebrowser/releases/latest)
+# Cloud Manager
 
-File Browser menyediakan antarmuka pengelolaan file di dalam direktori tertentu dan dapat digunakan untuk mengunggah, menghapus, melihat pratinjau, dan mengedit file Anda. Ini adalah perangkat lunak jenis **buat cloud Anda sendiri** di mana Anda cukup menginstalnya di server Anda, mengarahkannya ke suatu jalur, dan mengakses file Anda melalui antarmuka web yang bagus.
+Cloud Manager menyediakan antarmuka pengelolaan file di dalam direktori tertentu dan dapat digunakan untuk mengunggah, menghapus, melihat pratinjau, dan mengedit file Anda. Ini adalah perangkat lunak jenis **buat cloud Anda sendiri** di mana Anda cukup menginstalnya di server Anda, mengarahkannya ke suatu jalur, dan mengakses file Anda melalui antarmuka web yang bagus.
 
-## Documentation
+## Mulai Cepat (Quick Start)
 
-Documentation on how to install, configure, and contribute to this project is hosted at [filebrowser.org](https://filebrowser.org).
+Cara paling mudah untuk menjalankan **Cloud Manager** adalah menggunakan Docker Compose. Buat file `compose.yaml` (atau gunakan yang sudah disediakan) dan jalankan:
 
-## Project Status
+```bash
+docker compose up -d
+```
 
-This project is a finished product which fulfills its goal: be a single binary web File Browser which can be run by anyone anywhere. That means that File Browser is currently on **maintenance-only** mode. Therefore, please note the following:
+## Cara Login Default
 
-- It can take a while until someone gets back to you. Please be patient.
-- [Issues](https://github.com/filebrowser/filebrowser/issues) are meant to track bugs. Unrelated issues will be converted into [discussions](https://github.com/filebrowser/filebrowser/discussions).
-- The priority is triaging issues, addressing security issues and reviewing pull requests meant to solve bugs.
-- No new features are planned. Pull requests for new features are not guaranteed to be reviewed.
+Saat aplikasi pertama kali dijalankan, sistem akan otomatis membuatkan database baru dengan kredensial default berikut:
 
-Please read [@hacdias' personal reflection](https://hacdias.com/2026/03/11/filebrowser/) on the project status.
+* **URL Akses:** `http://localhost:8000` (atau port sesuai konfigurasi kamu)
+* **Username:** `admin`
+* **Password:** `admin@123456`
 
-## Contributing
-
-Contributions are always welcome. To start contributing to this project, read our [guidelines](CONTRIBUTING.md) first.
+> **Penting:** Pastikan kamu segera mengubah password default ini di menu *Settings > User Management* setelah berhasil login pertama kali.
 
 ## License
 
