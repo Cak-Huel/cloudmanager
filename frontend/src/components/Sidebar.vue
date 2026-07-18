@@ -115,13 +115,13 @@
 
     <p class="credits">
       <span>
-        <span v-if="disableExternal">File Browser</span>
+        <span v-if="disableExternal">Cloud Manager</span>
         <a
           v-else
           rel="noopener noreferrer"
           target="_blank"
-          href="https://github.com/filebrowser/filebrowser"
-          >File Browser</a
+          href="https://github.com/cak-huel/cloudmanager"
+          >Cloud Manager</a
         >
         <span> {{ " " }} {{ version }}</span>
       </span>
