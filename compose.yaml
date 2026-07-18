@@ -10,7 +10,7 @@ services:
       - /home/cak-hul/Documents:/srv
       - cloudmanager_db:/database
     environment:
-      - FB_REDIS_CACHE_URL=redis://default:filebrowser@redis:6379 # Use rediss:// for ssl
+      - FB_REDIS_CACHE_URL=redis://default:cloudmanager@redis:6379 # Use rediss:// for ssl
 
   redis:
     container_name: redis

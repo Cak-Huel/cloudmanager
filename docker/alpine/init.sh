@@ -30,6 +30,17 @@ done
 if [ -z "$config_file" ]; then 
   config_file="/config/settings.json"                                                                                                                                                                                                 
   set -- --config=/config/settings.json "$@"                                                                                                       
-fi                                                                                                                                                                                                                                                                                                                                                             
+fi
+
+# Auto-initialize database with default 12-character admin password if it doesn't exist
+if [ ! -f "/database/filebrowser.db" ]; then
+  echo "========================================================="
+  echo "Initializing new database..."
+  echo "Creating default user: admin"
+  echo "Default password: admin@123456"
+  echo "========================================================="
+  filebrowser config init -d /database/filebrowser.db
+  filebrowser users add admin admin@123456 -d /database/filebrowser.db --perm.admin
+fi
 
 exec filebrowser "$@"

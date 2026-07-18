@@ -1,3 +1,19 @@
+## Multistage build: Frontend Builder stage for compiling Vue/M3 design
+FROM node:24-alpine AS frontend-builder
+WORKDIR /app/frontend
+RUN corepack enable pnpm
+COPY frontend/package.json frontend/pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+COPY frontend/ ./
+RUN pnpm run build
+
+## Multistage build: Builder stage for compiling Go backend
+FROM golang:1.25-alpine AS builder
+WORKDIR /app
+COPY . .
+COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
+RUN go build -ldflags="-s -w" -o filebrowser .
+
 ## Multistage build: First stage fetches dependencies
 FROM alpine:3.23 AS fetcher
 
@@ -17,8 +33,8 @@ ENV GID=1000
 RUN addgroup -g $GID user && \
     adduser -D -u $UID -G user user
 
-# Copy binary, scripts, and configurations into image with proper ownership
-COPY --chown=user:user filebrowser /bin/filebrowser
+# Copy binary from builder, scripts, and configurations into image with proper ownership
+COPY --from=builder --chown=user:user /app/filebrowser /bin/filebrowser
 COPY --chown=user:user docker/common/ /
 COPY --chown=user:user docker/alpine/ /
 COPY --chown=user:user --from=fetcher /sbin/tini-static /bin/tini
